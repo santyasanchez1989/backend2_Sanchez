@@ -1,4 +1,3 @@
-//Aqui codeamos para dar el "formato", a como cada producto estara formado.
 
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";

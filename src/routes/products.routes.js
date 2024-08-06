@@ -19,7 +19,7 @@ router.get("/", passportCall("jwt"), authorization("user"), async (req, res) => 
       learn: true,
     };
 
-    // Si nos solicitan por categoría
+   
     if (category) {
       const products = await productDao.getAll({ category }, options);
       return res.status(200).json({ status: "success", products });

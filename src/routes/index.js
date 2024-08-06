@@ -10,7 +10,7 @@ router.use("/carts", cartsRouter);
 router.use("/session", sessionRouter)
 router.get("*", async (req, res) => {
   try {
-    res.status(404).json({ status: "error", msg: "Route not found" });
+    res.status(404).json({ status: "error", msg: "Ruta no encontrada" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: "Error", msg: "Error interno del servidor" });
