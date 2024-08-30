@@ -29,45 +29,25 @@ const getCartById = async (cid) => {
   return cart;
 };
 
-
 const addProductToCart = async (cid, pid) => {
   await getCarts();
-  const index = carts.findIndex((cart) => cart.id === cid);
-  
-  
-  if (index === -1) {
-    throw new Error("Carrito no encontrado");
-  }
+  const product = {
+    product: pid,
+    quantity: 1,satisfies
+  };
 
-  const existingProductIndex = carts[index].products.findIndex((product) => product.product === pid);
-  
-  if (existingProductIndex !== -1) {
-    
-    carts[index].products[existingProductIndex].quantity++;
-  } else {
-    
-    carts[index].products.push({ product: pid, quantity: 1 });
-  }
+  const index = carts.findIndex((cart) => cart.id === cid);
+  carts[index].products.push(product);
+
 
   await fs.promises.writeFile(pathFile, JSON.stringify(carts));
   
   return carts[index];
 };
 
-const updateCart = async (cid, updatedCart) => {
-  try {
-    
-    return updatedCart;
-  } catch (error) {
-    throw new Error("Error al actualizar carro");
-  }
-};
-
-
 export default {
   getCarts,
   getCartById,
   addProductToCart,
   createCart,
-  updateCart,
- };
+};

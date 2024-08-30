@@ -22,7 +22,7 @@ addForm.addEventListener("submit", async (e) => {
   addForm.reset();
 
 })
-// Eliminar productos
+
 
 deleteForm.addEventListener("submit", async (e) => {
   e.preventDefault();

@@ -10,6 +10,8 @@ import envs from "./config/envs.config.js";
 import passport from "passport";
 import { initializePassport } from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import dotenv from 'dotenv';
 
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(express.json());
 app.engine("handlebars", handlebars.engine()); 
 app.set("views", __dirname + "/views"); 
 app.set("view engine", "handlebars"); 
+app.use(express.static("public"));
 app.use(cookieParser());
 app.use(
   session({
@@ -28,18 +31,22 @@ app.use(
     saveUninitialized: true, 
   })
 );
+app.use(cors());
 
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use("/api", routes);
 
-app.use("/", viewsRoutes);
+
+app.use("/", viewsRoutes)
 
 const httpServer = app.listen(envs.PORT, () => {
   console.log(`Server on port ${envs.PORT}`);
 });
+
 
 export const io = new Server(httpServer);
 

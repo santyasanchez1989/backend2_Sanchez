@@ -1,13 +1,10 @@
 import { cartModel } from "./models/cart.model.js";
 import { productModel } from "./models/product.model.js";
 
-
-
 const getAll = async () => {
   const carts = await cartModel.find();
   return carts;
 };
-
 
 const getById = async (id) => {
   const cart = await cartModel.findById(id).populate("products.product");
@@ -20,7 +17,6 @@ const create = async () => {
   return cart;
 };
 
-
 const update = async (id, data) => {
   const cartUpdate = await cartModel.findByIdAndUpdate(id, data, { new: true });
   return cartUpdate;
@@ -31,9 +27,7 @@ const deleteOne = async (id) => {
   return cart;
 };
 
-
 const addProductToCart = async (cid, pid) => {
-
 
   const cart = await cartModel.findById(cid);
 
@@ -48,8 +42,6 @@ const addProductToCart = async (cid, pid) => {
   return cart;
 };
 
-
-
 const deleteProductToCart = async (cid, pid) => {
   const cart = await cartModel.findById(cid);
 
@@ -60,27 +52,24 @@ const deleteProductToCart = async (cid, pid) => {
   return cart;
 };
 
-
-
 const updateQuantityProductInCart = async (cid, pid, quantity) => {
   const cart = await cartModel.findById(cid);
-  const product = cart.products.find( element => element.product == pid);
+  const product = cart.products.find((element) => element.product == pid);
   product.quantity = quantity;
 
   await cart.save();
   return cart;
-}
+};
 
 const clearProductsToCart = async (cid) => {
-
   const cart = await cartModel.findById(cid);
-  cart.products = []
+  cart.products = [];
 
-  await cart.save()
+  await cart.save();
 
   return cart;
-  
-}
+};
+
 export default {
   getAll,
   getById,
@@ -90,5 +79,5 @@ export default {
   addProductToCart,
   deleteProductToCart,
   updateQuantityProductInCart,
-  clearProductsToCart
+  clearProductsToCart,
 };
