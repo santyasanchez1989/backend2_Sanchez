@@ -6,7 +6,7 @@ const router = Router();
 // Obtener todos los tickets con paginación y filtros opcionales
 router.get('/', async (req, res) => {
   try {
-    const query = req.query || {}; // Recupera los filtros de la query string
+    const query = req.query || {}; 
     const options = {
       page: parseInt(req.query.page) || 1,
       limit: parseInt(req.query.limit) || 10,
