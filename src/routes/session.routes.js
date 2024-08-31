@@ -9,10 +9,10 @@ const router = Router();
 
 router.post("/register", passportCall("register"), async (req, res) => {
   try {
-    res.status(201).json({ status: "ok", msg: "User created" });
+    res.status(201).json({ status: "ok", msg: "Usuario creado" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ status: "error", msg: "Internal server error" });
+    res.status(500).json({ status: "error", msg: "Error interno del servidor." });
   }
 });
 
@@ -25,7 +25,7 @@ router.post("/login", passportCall("login"), async (req, res) => {
     return res.status(200).json({ status: "ok", payload: req.user });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ status: "error", msg: "Internal server error" });
+    res.status(500).json({ status: "error", msg: "Error interno del servidor" });
   }
 });
 
@@ -42,7 +42,7 @@ router.get(
       return res.status(200).json({ status: "ok", payload: req.user });
     } catch (error) {
       console.log(error);
-      res.status(500).json({ status: "error", msg: "Internal server error" });
+      res.status(500).json({ status: "error", msg: "Error interno del servidor" });
     }
   }
 );

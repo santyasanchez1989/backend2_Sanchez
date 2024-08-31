@@ -26,7 +26,7 @@ export const initializePassport = () => {
       try {
         const { first_name, last_name, age } = req.body;
         const user = await userRepository.getByEmail(username);
-        if (user) return done(null, false, { message: "User already exists" });
+        if (user) return done(null, false, { message: "Usuario ya exsiste." });
         
         const cart = await cartRepository.create();
         const newUser = {
@@ -53,7 +53,7 @@ export const initializePassport = () => {
       try {
         const user = await userRepository.getByEmail(username);
         
-        if (!user || !isValidPassword(user.password, password)) return done(null, false, {message: "User or email invalid"});
+        if (!user || !isValidPassword(user.password, password)) return done(null, false, {message: "Usuario o Email no reconocido."});
 
 
         return done(null, user);
