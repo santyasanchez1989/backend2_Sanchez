@@ -1,0 +1,6 @@
+MONGO_URL=mongodb+srv://santiago:37x3byifjUG2dFeF@backend.f6prvy6.mongodb.net/proyectofinal
+PORT=8080
+SECRET_CODE=calleFalsa123
+GOOGLE_CLIENT_ID=129915957244-4hnfbj9ojfeie9l5o0gllj7h0ij2uclo.apps.googleusercontent.com
+GOOGLE_CLIENT_SCRET=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
+JWT_SECRET_CODE=callefalsa123

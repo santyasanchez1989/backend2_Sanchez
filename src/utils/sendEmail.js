@@ -19,11 +19,7 @@ export const sendEmail = async (email, subject, message, html) => {
         text: message,
         html: html,
         attachments: [
-            {
-                filename: "gatito.jpg",
-                path: __dirname + "/public/images/gatito.jpg",
-                cid: "gatito",
-            },
+           
         ],
     });
 };
